@@ -60,6 +60,7 @@ message LoginRes{
 
 message ConfirmationReq{
     int64 code = 1;
+    string email = 2;
 }
 
 message ConfirmationRes{
