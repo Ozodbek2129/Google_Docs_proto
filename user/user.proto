@@ -11,9 +11,10 @@ service UserService {
     rpc GetUSerByEmail(GetUSerByEmailReq) returns (GetUserResponse);
     rpc UpdatePassword (UpdatePasswordReq) returns (UpdatePasswordRes);
     rpc ResetPassword (ResetPasswordReq) returns (ResetPasswordRes);
-    rpc ConfirmationPassword(ConfirmationReq) returns (ConfirmationResponse);
+    rpc ConfirmationPassword(ConfirmationReset) returns (ConfirmationResponse);
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserRespose);
     rpc DeleteUser (UserId) returns (DeleteUserr);
+    rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
 }
 
 message User{
@@ -32,7 +33,6 @@ message RegisterReq{
     string first_name = 2;
     string last_name = 3;
     string password = 4;
-    string role = 5;
 }
 
 message RegisterRes{
@@ -76,7 +76,12 @@ message UpdatePasswordRes{
 
 message ResetPasswordReq{
     string email = 1;
+}
+
+message ConfirmationReset {
+    string email = 1;
     string new_password = 2;
+    string code = 3;
 }
 
 message ResetPasswordRes{
@@ -103,5 +108,14 @@ message UserId{
 }
 
 message DeleteUserr{
+    string message = 1;
+}
+
+message UpdateRoleReq {
+    string email = 1;
+    string role = 2;
+}
+
+message UpdateRoleRes {
     string message = 1;
 }
