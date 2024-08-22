@@ -11,34 +11,24 @@ service UserService {
     rpc GetUSerByEmail(GetUSerByEmailReq) returns (GetUserResponse);
     rpc UpdatePassword (UpdatePasswordReq) returns (UpdatePasswordRes);
     rpc ResetPassword (ResetPasswordReq) returns (ResetPasswordRes);
-    rpc ConfirmationPassword(ConfirmationReset) returns (ConfirmationResponse);
+    rpc ConfirmationPassword(ConfirmationReq) returns (ConfirmationResponse);
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserRespose);
     rpc DeleteUser (UserId) returns (DeleteUserr);
-    rpc UpdateRole (UpdateRoleRes) returns (UpdateRoleRes);
-    rpc ProfileImage (ImageReq) returns (ImageRes);
-}
-
-message ImageReq{
-    string image = 1;
-}
-
-message ImageRes{
-    string message = 1;
 }
 
 message User{
-    string id         = 1;
-    string email      = 2;
+    string id = 1;
+    string email = 2;
     string first_name = 3;
-    string last_name  = 4;
-    string password   = 5;
-    string role       = 6;
+    string last_name = 4;
+    string password = 5;
+    string role = 6;
     string created_at = 7;
     string updated_at = 8;
 }
 
 message RegisterReq{
-    string email      = 1;
+    string email = 1;
     string first_name = 2;
     string last_name = 3;
     string password = 4;
@@ -50,13 +40,13 @@ message RegisterRes{
 }
 
 message LoginReq{
-    string email    = 1;
+    string email = 1;
     string password = 2;
-    string user_id  = 3;
+    string user_id = 3;
 }
 
 message LoginRes{
-    string access  = 1;
+    string access = 1;
     string refresh = 2;
 }
 
@@ -87,14 +77,6 @@ message UpdatePasswordRes{
 
 message ResetPasswordReq{
     string email = 1;
-}
-
-message ConfirmationReset {
-    string email = 1;
-}
-
-message ConfirmationReset {
-    string email        = 1;
     string new_password = 2;
 }
 
@@ -107,10 +89,10 @@ message ConfirmationResponse{
 }
 
 message UpdateUserRequest{
-    string id         = 1;
-    string email      = 2;
+    string id = 1;
+    string email = 2;
     string first_name = 3;
-    string last_name  = 4;
+    string last_name = 4;
 }
 
 message UpdateUserRespose{
