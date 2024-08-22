@@ -15,6 +15,15 @@ service UserService {
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserRespose);
     rpc DeleteUser (UserId) returns (DeleteUserr);
     rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
+    rpc ProfileImage (ImageReq) returns (ImageRes);
+}
+
+message ImageReq{
+    string image = 1;
+}
+
+message ImageRes{
+    string message = 1;
 }
 
 message User{
