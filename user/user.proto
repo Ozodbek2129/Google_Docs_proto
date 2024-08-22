@@ -16,6 +16,16 @@ service UserService {
     rpc DeleteUser (UserId) returns (DeleteUserr);
     rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
     rpc ProfileImage (ImageReq) returns (ImageRes);
+    rpc StoreRefreshToken(StoreRefreshTokenReq) returns (StoreRefReshTokenRes);
+}
+
+message StoreRefReshTokenRes{
+    string message = 1;
+}
+
+message StoreRefreshTokenReq{
+    string user_id = 1;
+    string refresh = 2;
 }
 
 message ImageReq{
