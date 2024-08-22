@@ -11,12 +11,21 @@ service UserService {
     rpc GetUSerByEmail(GetUSerByEmailReq) returns (GetUserResponse);
     rpc UpdatePassword (UpdatePasswordReq) returns (UpdatePasswordRes);
     rpc ResetPassword (ResetPasswordReq) returns (ResetPasswordRes);
-    rpc ConfirmationPassword(ConfirmationReset) returns (ConfirmationResponse);
+    rpc ConfirmationPassword(ConfirmationReq) returns (ConfirmationResponse);
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserRespose);
     rpc DeleteUser (UserId) returns (DeleteUserr);
     rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
     rpc ProfileImage (ImageReq) returns (ImageRes);
     rpc StoreRefreshToken(StoreRefreshTokenReq) returns (StoreRefReshTokenRes);
+}
+
+message UpdateRoleRes{
+    string message = 1;
+}
+
+message UpdateRoleReq{
+    string email = 1;
+    string role = 2;
 }
 
 message StoreRefReshTokenRes{
@@ -52,6 +61,7 @@ message RegisterReq{
     string first_name = 2;
     string last_name = 3;
     string password = 4;
+    string role = 5;
 }
 
 message RegisterRes{
@@ -61,6 +71,7 @@ message RegisterRes{
 message LoginReq{
     string email = 1;
     string password = 2;
+    string user_id = 3;
 }
 
 message LoginRes{
@@ -69,7 +80,7 @@ message LoginRes{
 }
 
 message ConfirmationReq{
-    int64 code = 1;
+    int64 code   = 1;
     string email = 2;
 }
 
@@ -96,12 +107,7 @@ message UpdatePasswordRes{
 
 message ResetPasswordReq{
     string email = 1;
-}
-
-message ConfirmationReset {
-    string email = 1;
     string new_password = 2;
-    string code = 3;
 }
 
 message ResetPasswordRes{
@@ -128,14 +134,5 @@ message UserId{
 }
 
 message DeleteUserr{
-    string message = 1;
-}
-
-message UpdateRoleReq {
-    string email = 1;
-    string role = 2;
-}
-
-message UpdateRoleRes {
     string message = 1;
 }
