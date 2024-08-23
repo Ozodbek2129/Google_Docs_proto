@@ -39,6 +39,7 @@ message StoreRefreshTokenReq{
 
 message ImageReq{
     string image = 1;
+    string email = 2;
 }
 
 message ImageRes{
