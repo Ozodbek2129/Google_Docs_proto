@@ -7,7 +7,7 @@ package user;
 service UserService {
     rpc Register(RegisterReq) returns (RegisterRes);
     rpc Login(LoginReq) returns (LoginRes);
-    rpc ConfirmationRegister(ConfirmationReq) returns (ConfirmationRes);
+    rpc ConfirmationRegister(ConfirmationRegisterReq) returns (ConfirmationRegisterRes);
     rpc GetUSerByEmail(GetUSerByEmailReq) returns (GetUserResponse);
     rpc UpdatePassword (UpdatePasswordReq) returns (UpdatePasswordRes);
     rpc ResetPassword (ResetPasswordReq) returns (ResetPasswordRes);
@@ -56,6 +56,16 @@ message User{
     string updated_at = 8;
 }
 
+message ConfirmationRegisterReq {
+    string email = 1;
+    int64 code = 2;
+}
+
+
+message ConfirmationRegisterRes{
+    User user = 1;
+}
+
 message RegisterReq{
     string email = 1;
     string first_name = 2;
@@ -82,6 +92,7 @@ message LoginRes{
 message ConfirmationReq{
     int64 code   = 1;
     string email = 2;
+    string new_password = 3;
 }
 
 message ConfirmationRes{
@@ -108,7 +119,6 @@ message UpdatePasswordRes{
 
 message ResetPasswordReq{
     string email = 1;
-    string new_password = 2;
 }
 
 message ResetPasswordRes{
