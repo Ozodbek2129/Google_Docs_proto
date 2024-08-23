@@ -72,7 +72,6 @@ message RegisterRes{
 message LoginReq{
     string email = 1;
     string password = 2;
-    string user_id = 3;
 }
 
 message LoginRes{
