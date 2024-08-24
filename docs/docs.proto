@@ -12,6 +12,9 @@ service DocsService {
     rpc DeleteDocument(DeleteDocumentReq) returns (DeleteDocumentRes);
     rpc ShareDocument(ShareDocumentReq) returns (ShareDocumentRes);
     rpc SearchDocument(SearchDocumentReq) returns (SearchDocumentRes);
+    rpc GetAllVersions(GetAllVersionsReq) returns (GetAllVersionsRes);
+    rpc RestoreVersion(RestoreVersionReq) returns (RestoreVersionRes);
+    rpc DownloadDocument(DownloadDocumentReq) returns (DownloadDocumentRes);
 }
 
 message CreateDocumentReq {
@@ -56,6 +59,7 @@ message UpdateDocumentReq {
     string content       = 2;
     repeated string tags = 3;
     string category      = 4;
+    string comment       = 5;
 }
 
 message UpdateDocumentRes {
