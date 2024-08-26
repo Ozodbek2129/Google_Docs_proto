@@ -61,6 +61,7 @@ message UpdateDocumentReq {
     repeated string tags = 3;
     string category      = 4;
     string comment       = 5;
+    string author_id     = 6;
 }
 
 message UpdateDocumentRes {
