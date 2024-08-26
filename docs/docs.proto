@@ -46,9 +46,9 @@ message GetDocumentRes {
 }
 
 message GetAllDocumentsReq {
-    string author_id = 1;
-    string limit = 2;
-    string offset = 3;
+    string email = 1;
+    int32  limit = 2;
+    int32  page = 3;
 }
 
 message GetAllDocumentsRes {
