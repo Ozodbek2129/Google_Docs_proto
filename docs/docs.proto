@@ -14,40 +14,41 @@ service DocsService {
     rpc SearchDocument(SearchDocumentReq) returns (SearchDocumentRes);
     rpc GetAllVersions(GetAllVersionsReq) returns (GetAllVersionsRes);
     rpc RestoreVersion(RestoreVersionReq) returns (RestoreVersionRes);
-    rpc DownloadDocument(DownloadDocumentReq) returns (DownloadDocumentRes);
+    // rpc DownloadDocument(DownloadDocumentReq) returns (DownloadDocumentRes);
 }
 
 message CreateDocumentReq {
-    string title         = 1;
-    string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
+    string title                   = 1;
+    string content                 = 2;
+    repeated string tags           = 3;
+    string category                = 4;
+    string author_id               = 5;
+    repeated string collabrator_id = 6;
 }
 
 message CreateDocumentRes {
-    string title         = 1;
-    string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
-    string author        = 5;
+    string message = 1;
 }
 
 message GetDocumentReq {
     string title = 1;
-    string email = 2;
+    string author_id = 2;
 }
 
 message GetDocumentRes {
-    string title         = 1;
-    string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
-    string author        = 5;
-    string last_updated  = 6;
+    string title          = 1;
+    string content        = 2;
+    repeated string tags  = 3;
+    string category       = 4;
+    string author_name    = 5;
+    string author_surname = 6;
+    string last_updated   = 7;
 }
 
 message GetAllDocumentsReq {
-    string email = 1;
+    string author_id = 1;
+    string limit = 2;
+    string offset = 3;
 }
 
 message GetAllDocumentsRes {
@@ -68,7 +69,7 @@ message UpdateDocumentRes {
 
 message DeleteDocumentReq {
     string title = 1;
-    string email = 2;
+    string author_id = 2;
 }
 
 message DeleteDocumentRes {
@@ -87,9 +88,28 @@ message ShareDocumentRes {
 
 message SearchDocumentReq {
     string title = 1;
-    string email = 2;
+    string author_id = 2;
 }
 
 message SearchDocumentRes {
     repeated GetDocumentRes documents = 1;
+}
+
+message GetAllVersionsReq {
+    string author_id = 1;
+    string title     = 2;
+}
+
+message GetAllVersionsRes {
+    repeated GetDocumentRes versions = 1;
+}
+
+message RestoreVersionReq {
+    string title         = 1;
+    int32 version_number = 2;
+    string author_id     = 3;
+}
+
+message RestoreVersionRes {
+    string message = 1;
 }
