@@ -17,37 +17,58 @@ service DocsService {
     rpc DownloadDocument(DownloadDocumentReq) returns (DownloadDocumentRes);
 }
 
+message DownloadDocumentRes{
+    string url_download = 1;
+}
+
+message DownloadDocumentReq{
+    string author_id = 1;
+    string title = 2;
+}
+
+message RestoreVersionRes{
+    string message = 1;
+}
+
+message RestoreVersionReq{
+    string author_id = 1;
+    string title = 2;
+    string version = 3;
+}
+
+message GetAllVersionsRes{
+    repeated GetDocumentRes documents_version = 1;
+}
+
+message GetAllVersionsReq{
+    string title = 1;
+    string author_id = 2;
+}
+
 message CreateDocumentReq {
     string title         = 1;
-    string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
 }
 
 message CreateDocumentRes {
-    string title         = 1;
-    string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
-    string author        = 5;
+    string title = 1;
+    string author_id = 2;
 }
 
 message GetDocumentReq {
     string title = 1;
-    string email = 2;
+    string authorId = 2;
 }
 
 message GetDocumentRes {
     string title         = 1;
     string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
-    string author        = 5;
-    string last_updated  = 6;
+    string author_id     = 3;
+    string last_updated  = 4;
+    int32  version       = 5;
 }
 
 message GetAllDocumentsReq {
-    string email = 1;
+    string author_id = 1;
     int32  limit = 2;
     int32  page = 3;
 }
@@ -59,18 +80,15 @@ message GetAllDocumentsRes {
 message UpdateDocumentReq {
     string title         = 1;
     string content       = 2;
-    repeated string tags = 3;
-    string category      = 4;
-    string comment       = 5;
 }
 
 message UpdateDocumentRes {
-    string message = 1;
+    string content = 1;
 }
 
 message DeleteDocumentReq {
     string title = 1;
-    string email = 2;
+    string author_id = 2;
 }
 
 message DeleteDocumentRes {
@@ -81,6 +99,7 @@ message ShareDocumentReq {
     string title           = 1;
     string recipient_email = 2;
     string permissions     = 3;
+    string url             = 4;
 }
 
 message ShareDocumentRes {
@@ -89,7 +108,7 @@ message ShareDocumentRes {
 
 message SearchDocumentReq {
     string title = 1;
-    string email = 2;
+    string author_id = 2;
 }
 
 message SearchDocumentRes {
