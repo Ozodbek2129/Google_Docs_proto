@@ -23,7 +23,7 @@ message DownloadDocumentRes{
 
 message DownloadDocumentReq{
     string author_id = 1;
-    string title = 2;
+    string title     = 2;
 }
 
 message RestoreVersionRes{
@@ -32,8 +32,8 @@ message RestoreVersionRes{
 
 message RestoreVersionReq{
     string author_id = 1;
-    string title = 2;
-    string version = 3;
+    string title     = 2;
+    string version   = 3;
 }
 
 message GetAllVersionsRes{
@@ -41,22 +41,23 @@ message GetAllVersionsRes{
 }
 
 message GetAllVersionsReq{
-    string title = 1;
+    string title     = 1;
     string author_id = 2;
 }
 
 message CreateDocumentReq {
-    string title         = 1;
-    string author_id = 2;
+    string title     = 1;
+    string content   = 2;
+    string author_id = 3;
 }
 
 message CreateDocumentRes {
-    string title = 1;
+    string title     = 1;
     string author_id = 2;
 }
 
 message GetDocumentReq {
-    string title = 1;
+    string title    = 1;
     string authorId = 2;
 }
 
@@ -70,8 +71,8 @@ message GetDocumentRes {
 
 message GetAllDocumentsReq {
     string author_id = 1;
-    int32  limit = 2;
-    int32  page = 3;
+    int32  limit     = 2;
+    int32  page      = 3;
 }
 
 message GetAllDocumentsRes {
@@ -79,16 +80,17 @@ message GetAllDocumentsRes {
 }
 
 message UpdateDocumentReq {
-    string title         = 1;
-    string content       = 2;
+    string title     = 1;
+    string content   = 2;
+    string author_id = 3;
 }
 
 message UpdateDocumentRes {
-    string content = 1;
+    string message = 1;
 }
 
 message DeleteDocumentReq {
-    string title = 1;
+    string title     = 1;
     string author_id = 2;
 }
 
@@ -108,10 +110,10 @@ message ShareDocumentRes {
 }
 
 message SearchDocumentReq {
-    string title = 1;
+    string title     = 1;
     string author_id = 2;
 }
 
 message SearchDocumentRes {
-    repeated GetDocumentRes documents = 1;
+    GetDocumentRes documents = 1;
 }
