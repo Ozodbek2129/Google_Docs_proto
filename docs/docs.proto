@@ -47,8 +47,7 @@ message GetAllVersionsReq{
 
 message CreateDocumentReq {
     string title     = 1;
-    string content   = 2;
-    string author_id = 3;
+    string author_id = 2;
 }
 
 message CreateDocumentRes {
