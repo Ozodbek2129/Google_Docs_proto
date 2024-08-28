@@ -103,6 +103,7 @@ message ShareDocumentReq {
     string recipient_email = 2;
     string permissions     = 3;
     string url             = 4;
+    string user_id         = 5;
 }
 
 message ShareDocumentRes {
