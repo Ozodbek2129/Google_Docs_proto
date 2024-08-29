@@ -54,6 +54,7 @@ message CreateDocumentReq {
 message CreateDocumentRes {
     string title     = 1;
     string author_id = 2;
+    string docs_id   = 3;
 }
 
 message GetDocumentReq {
