@@ -67,12 +67,14 @@ message GetDocumentRes {
     string author_id     = 3;
     string last_updated  = 4;
     int32  version       = 5;
+    string docs_id       = 6;
 }
 
 message GetAllDocumentsReq {
     string author_id = 1;
     int32  limit     = 2;
     int32  page      = 3;
+    string docs_id   = 4;
 }
 
 message GetAllDocumentsRes {
@@ -83,6 +85,7 @@ message UpdateDocumentReq {
     string title     = 1;
     string content   = 2;
     string author_id = 3;
+    string docs_id   = 4;
 }
 
 message UpdateDocumentRes {
@@ -114,8 +117,9 @@ message ShareDocumentRes {
 message SearchDocumentReq {
     string title     = 1;
     string author_id = 2;
+    string docs_id   = 3;
 }
 
 message SearchDocumentRes {
-    GetDocumentRes documents = 1;
+    repeated GetDocumentRes documents = 1;
 }
