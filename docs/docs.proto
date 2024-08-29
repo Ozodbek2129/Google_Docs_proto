@@ -33,7 +33,7 @@ message RestoreVersionRes{
 message RestoreVersionReq{
     string author_id = 1;
     string title     = 2;
-    string version   = 3;
+    int32 version    = 3;
     string id        = 4;
 }
 
