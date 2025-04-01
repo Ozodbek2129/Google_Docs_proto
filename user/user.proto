@@ -17,6 +17,24 @@ service UserService {
     rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
     rpc ProfileImage (ImageReq) returns (ImageRes);
     rpc StoreRefreshToken(StoreRefreshTokenReq) returns (StoreRefReshTokenRes);
+    rpc GetallUsers(GetAllUsersReq) returns (GetAllUsersRes);
+}
+
+message GetAllUsersReq {
+    int32 limit = 1;
+    int32 offset = 2;
+}
+
+message GetAllUsersRes {
+    repeated Users user = 1;
+}
+
+message Users {
+    string id = 1;
+    string email = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string role = 5;
 }
 
 message UpdateRoleRes{
@@ -46,7 +64,7 @@ message ImageRes{
     string message = 1;
 }
 
-message User{
+message User {
     string id = 1;
     string email = 2;
     string first_name = 3;
